@@ -68,7 +68,7 @@ if __name__=='__main__':
     print("----SCROLL OVER----")
     driver.implicitly_wait(3)
     print("----MAKING JSON----")
-    with open("data.json", "w") as outfile:
+    with open("asset/json/data.json", "w") as outfile:
         json.dump(makeJson(getNames(driver),getSrc(driver)), outfile)
     print("----COMPLETE---")
     shutDown(driver)
