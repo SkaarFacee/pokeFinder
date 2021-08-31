@@ -1,2 +1,2 @@
 # pokeFinder
-Pokemon detection
+Mini tho
