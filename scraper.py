@@ -62,13 +62,13 @@ if __name__=='__main__':
     clearPath(driver)
     scrollToEnd(driver)
     clickLoad(driver)
-    for i in range(0,3):
+    for i in range(0,15):
         time.sleep(1)
         scrollToEnd(driver)
     print("----SCROLL OVER----")
     driver.implicitly_wait(3)
     print("----MAKING JSON----")
-    with open("asset/json/data.json", "w") as outfile:
+    with open("assets/json/data.json", "w") as outfile:
         json.dump(makeJson(getNames(driver),getSrc(driver)), outfile)
     print("----COMPLETE---")
     shutDown(driver)

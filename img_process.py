@@ -2,6 +2,7 @@
 import json
 import cv2
 import numpy as np
+import os 
 
 def read_img(path1,path2):
     return cv2.imread(path1,-1),cv2.imread(path2,-1)
@@ -11,7 +12,7 @@ def preprocess(img,size):
     return cv2.resize(img,size,cv2.INTER_AREA)
 
 def bg_shape(img):
-    return cv2.resize(img,(1280,554))
+    return cv2.resize(img,(1280,554),interpolation=cv2.INTER_CUBIC)
 
 def get_grayscale(img):
     return cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -51,7 +52,7 @@ def cycle(path1,path2):
     return img2
 
 if __name__ == '__main__':
-    bgs=["arena","canyon","cave","city","coast","detective","forest","glacier","gym","volcano"]
+    bgs=[x.split('.')[0] for x in os.listdir('assets/backgrounds/')]
     base_path="assets/img/"
     base_bg="assets/backgrounds/"
     with open('assets/legend/legend.json') as file:
@@ -59,7 +60,8 @@ if __name__ == '__main__':
     for bg_name in bgs:
         for save_name,name in data.items():
             path1=base_path+save_name+".png"
-            path2=base_bg+bg_name+".jpg"
+            path2=base_bg+bg_name+'.jpg'
             img=cycle(path1,path2)
             cv2.imwrite("assets/dataset/"+str(bg_name)+"_"+str(save_name)+".jpg",img)
     # cycle("assets/img/1.png","assets/backgrounds/gym.jpg")
+    
