@@ -63,5 +63,4 @@ if __name__ == '__main__':
             path2=base_bg+bg_name+'.jpg'
             img=cycle(path1,path2)
             cv2.imwrite("assets/dataset/"+str(bg_name)+"_"+str(save_name)+".jpg",img)
-    # cycle("assets/img/1.png","assets/backgrounds/gym.jpg")
     
